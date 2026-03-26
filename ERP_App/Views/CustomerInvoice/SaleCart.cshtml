@@ -1,0 +1,195 @@
+﻿@model ERP_App.Models.CustomerInvoiceMV
+
+@{
+    ViewBag.Title = "Sale Cart";
+}
+
+@using (Html.BeginForm("AddToCart", "CustomerInvoice", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(u => u.CompanyID)
+    @Html.HiddenFor(u => u.BranchID)
+    @Html.HiddenFor(u => u.UserID)
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">New Sale</div>
+            </div>
+            <div class="card-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.ProductID, "Product", htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @Html.DropDownList("ProductID", null, "Select Product", htmlAttributes: new { @class = "form-control", @onchange = "GetProductDetails();" })
+                                @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.SaleQuantity, htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @Html.EditorFor(model => model.SaleQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SaleQuantity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.SaleUnitPrice, htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @Html.EditorFor(model => model.SaleUnitPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.SaleUnitPrice, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Add to Cart" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+                <h4>Sale Cart</h4>
+                <hr />
+                <table class="table table-striped my-4 w-100" id="datatable2">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Sale Quantity</th>
+                            <th>Sale Unit Price</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SaleItems)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.SaleQuantity</td>
+                                <td>@item.SaleUnitPrice</td>
+                                <td>@(item.SaleQuantity * item.SaleUnitPrice)</td>
+                                <td>
+                                    @Html.ActionLink("Remove", "RemoveCartItem", new { id = item.SaleCartDetailID }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="col-lg-3">
+        <div class="card b mb-2">
+            <div class="card-header bb">
+                <h4 class="card-title">Order Customer</h4>
+            </div>
+            <div class="card-body bt">
+                <h4 class="b0">Select Customer</h4>
+
+                @Html.DropDownList("CustomerID", null, "--Select Customer--", htmlAttributes: new { @class = "form-control", @onchange = "SelectedCustomer();" })
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+
+            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">Contact</td>
+                        <td>
+                            <div class="text-right text-bold"><label id="customercontactno"></label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>
+                            <div class="text-right text-bold"><label id="customeraddress"></label></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="card b mb-2">
+            <div class="card-header bb">
+                <h4 class="card-title">Order Summary</h4>
+            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>
+                            @Html.EditorFor(model => model.OrderSummary.TotalAmount, new { htmlAttributes = new { @class = "form-control", @id = "subtotal", @readonly = "readonly" } })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card-body">
+                <div class="clearfix">
+                    <div class="float-right text-right">
+                        <div id="ordertotal" />
+                        <div class="text-sm">PKR</div>
+                    </div>
+                    <div class="float-left text-bold text-dark">ORDER TOTAL</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    <button class="btn btn-primary btn-block" onclick="CheckoutSale()" type="button">CHECKOUT</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        function GetProductDetails() {
+            var productID = $("#ProductID").val();
+            $.ajax({
+                type: "GET",
+                url: "/Stock/GetSelectProductDetails?productid=" + productID,
+                success: function (data) {
+                    $("#SaleUnitPrice").val(data.SaleUnitPrice);
+                    $("#CurrentPurchaseUnitPrice").val(data.CurrentPurchaseUnitPrice);
+                }
+            });
+        }
+
+        function SelectedCustomer() {
+            var customerID = $("#CustomerID").val();
+            $.ajax({
+                type: "GET",
+                url: "/Customer/GetSelectedCustomerDetails?id=" + customerID,
+                data: [],
+                success: function (data) {
+
+                    $("#customercontactno").text(data.ContactNo);
+                    $("#customeraddress").text(data.Address);
+                }
+            });
+        };
+
+
+        function CheckoutSale() {
+            var customerID = $("#CustomerID").val();
+            var isPaid = $("#ispaymentispaid").is(':checked');
+
+            $.ajax({
+                type: "POST",
+                url: "/CustomerInvoice/CheckoutSale",
+                data: { customerID: customerID, isPaid: isPaid },
+                success: function (data) {
+                    window.location.href = "/CustomerInvoice/PrintInvoice/" + data.invoiceID;
+                }
+            });
+        }
+    </script>

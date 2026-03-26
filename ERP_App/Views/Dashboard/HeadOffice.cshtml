@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "HeadOffice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Business Overview Dashboard</h2>
+
+    <div class="row g-4">
+        <div class="col-md-2">
+            <div class="card text-white bg-primary h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Suppliers</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalSuppliers</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card text-white bg-info h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalCustomers</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalProducts</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card text-white bg-info h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Purchase Orders</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalPurchaseOrders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Invoices</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalCustomerInvoices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-4">
+        <div class="col-md-4">
+            <div class="card border-dark shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Total Revenue</h5>
+                    <p class="card-text fs-3 text-success">Rs. @ViewBag.TotalRevenue.ToString("N2")</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-dark shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Total Procurement Expense</h5>
+                    <p class="card-text fs-3 text-success">Rs. @ViewBag.TotalProcurementExp.ToString("N2")</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-dark shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Total Profit</h5>
+                    <p class="card-text fs-3 text-success">Rs. @ViewBag.TotalProfit.ToString("N2")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <!-- Bar Chart Column (Half Width) -->
+    <div class="col-md-6">
+        <canvas id="chartOrders" style="height: 200px;"></canvas>
+    </div>
+
+    <!-- Pie Chart Column (Half Width) -->
+    <div class="col-md-6">
+        <canvas id="chartFinancials" style="height: 200px;"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Bar Chart
+    const ctxBar = document.getElementById('chartOrders').getContext('2d');
+    new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: ['Suppliers', 'Products', 'Purchase Orders', 'Invoices'],
+            datasets: [{
+                label: 'Count',
+                data: [
+                    @ViewBag.TotalSuppliers,
+                    @ViewBag.TotalProducts,
+                    @ViewBag.TotalPurchaseOrders,
+                    @ViewBag.TotalCustomerInvoices
+                ],
+                backgroundColor: ['#0d6efd', '#198754', '#0dcaf0', '#ffc107']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Ring (Doughnut) Chart for Financials
+    const ctxPie = document.getElementById('chartFinancials').getContext('2d');
+    new Chart(ctxPie, {
+        type: 'doughnut', // Changed from 'pie' to 'doughnut'
+        data: {
+            labels: ['Revenue', 'Procurement Expense', 'Profit'],
+            datasets: [{
+                label: 'Financial Distribution',
+                data: [
+                    @ViewBag.TotalRevenue,
+                    @ViewBag.TotalProcurementExp,
+                    @ViewBag.TotalProfit
+                ],
+                backgroundColor: ['#28a745', '#fd7e14', '#17a2b8'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const value = context.raw;
+                            const percentage = ((value / total) * 100).toFixed(2);
+                            return `${context.label}: Rs. ${value.toLocaleString()} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+</script>

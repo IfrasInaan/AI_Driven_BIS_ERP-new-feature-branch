@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP_App", "ERP_App\ERP_App.csproj", "{EC98170A-D58A-46C5-92CF-D8FAF0C757B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLayer", "DatabaseLayer\DatabaseLayer.csproj", "{AFFA969B-1AB7-41CE-AD71-8F1AB548EEA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC98170A-D58A-46C5-92CF-D8FAF0C757B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC98170A-D58A-46C5-92CF-D8FAF0C757B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC98170A-D58A-46C5-92CF-D8FAF0C757B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC98170A-D58A-46C5-92CF-D8FAF0C757B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFFA969B-1AB7-41CE-AD71-8F1AB548EEA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFFA969B-1AB7-41CE-AD71-8F1AB548EEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFFA969B-1AB7-41CE-AD71-8F1AB548EEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFFA969B-1AB7-41CE-AD71-8F1AB548EEA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6EA26A35-EAE9-4ECA-A428-55CF1EE69878}
+	EndGlobalSection
+EndGlobal

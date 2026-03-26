@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index 2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index 2</h2>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
+}
+else
+{
+    <p>@ViewBag.Message</p>
+}
+
+

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<ERP_App.Models.CompaniesRequestMV>
+
+@{
+    ViewBag.Title = "Companies";
+}
+
+<h2>Companies</h2>
+
+
+<table class="table  table-responsive  table-hover">
+    <tr>
+        <th>
+            Action
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Company
+        </th>
+        <th>
+            Branch
+        </th>
+        <th>
+            Branch Type
+        </th>
+        <th>
+            Branch Contact
+        </th>
+        <th>
+            Branch Address
+        </th>
+        <th>
+            Focal Person
+        </th>
+        <th>
+            Contact No(Focal Person)
+        </th>
+        <th>
+            Email(Focal Person)
+        </th>
+        <th>
+            Address(Focal Person)
+        </th>
+        <th>
+            CNIC(Focal Person)
+        </th>
+        <th>
+            Designation
+        </th>
+        <th>
+            Monthly Salary
+        <th>
+            User Name
+        </th>
+        <th>
+            User Type
+        </th>
+        <th>
+            Password
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{ if (item.Status == "De-Active")
+                {
+                    @Html.ActionLink("Approve", "Approve", new { userid = item.UserID }, new { @class = "btn btn-outline-success" })
+                }
+                else
+                {
+                    @Html.ActionLink("De-Active", "DeApprove", new { userid = item.UserID }, new { @class = "btn btn-outline-danger" })
+                }
+              }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlySalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+
+
+    </tr>
+}
+
+</table>

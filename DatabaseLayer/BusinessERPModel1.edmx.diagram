@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="10375f94fe4041a48c2e2908bd182123" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="BussinessERPDbModel1.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblAccountActivity" Width="1.5" PointX="10.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblAccountControl" Width="1.5" PointX="8.125" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblAccountHead" Width="1.5" PointX="5.25" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblAccountSetting" Width="1.5" PointX="12.625" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblAccountSubControl" Width="1.5" PointX="10.625" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblAgent" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblBranch" Width="1.5" PointX="2.375" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblBranchType" Width="1.5" PointX="0.5" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCategory" Width="1.5" PointX="5.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCity" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCompany" Width="1.5" PointX="19.625" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCountry" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomer" Width="1.5" PointX="5.25" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomerInvoice" Width="1.5" PointX="13.125" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomerInvoiceDetail" Width="1.5" PointX="18.75" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomerPayment" Width="1.5" PointX="18.625" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomerReturnInvoice" Width="1.5" PointX="21.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomerReturnInvoiceDetail" Width="1.5" PointX="24" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblCustomerReturnPayment" Width="1.5" PointX="27" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblEmployee" Width="1.5" PointX="7.75" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblFinancialYear" Width="1.5" PointX="5.125" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblPayroll" Width="1.5" PointX="8.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblPurchaseCartDetail" Width="1.5" PointX="16.125" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSaleCartDetail" Width="1.5" PointX="12.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblState" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblStock" Width="1.5" PointX="10.5" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplier" Width="1.5" PointX="8.25" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplierInvoice" Width="1.5" PointX="15.625" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplierInvoiceDetail" Width="1.5" PointX="18.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplierPayment" Width="1.5" PointX="16.25" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplierReturnInvoice" Width="1.5" PointX="21.75" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplierReturnInvoiceDetail" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblSupplierReturnPayment" Width="1.5" PointX="1.25" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblTransaction" Width="1.5" PointX="12.875" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblUser" Width="1.5" PointX="2.5" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BussinessERPDbModel1.tblUserType" Width="1.5" PointX="0.75" PointY="32.125" IsExpanded="true" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSetting_tblAccountActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountControl_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountControl_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountControl_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSetting_tblAccountControl" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSubControl_tblAccountControl" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransaction_tblAccountControl" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountHead_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSetting_tblAccountHead" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSubControl_tblAccountHead" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransaction_tblAccountHead" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransection_tblAccountHead" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSetting_tblAccountSubControl" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSetting_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSetting_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSubControl_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblAccountSubControl_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransection_tblAccountSubControl" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblBranch_tblBranchType" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCategory_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomer_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerInvoice_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerPayment_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoice_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnPayment_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblEmployee_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPayroll_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPurchaseCartDetail_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSaleCartDetail_tblStock" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblStock_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplier_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierInvoiceTable_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierReturnInvoice_tblBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCategory_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCategory_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblStock_tblCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomer_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerInvoice_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerPayment_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoice_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnPayment_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblEmployee_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPayroll_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPurchaseCartDetail_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSaleCartDetail_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblStock_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplier_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierInvoiceTable_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierReturnInvoice_tblCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomer_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerInvoice_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoice_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnPayment_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerInvoice_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerInvoiceDetail_tblCustomerInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerPayment_tblCustomerInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoice_tblCustomerInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoiceDetail_tblCustomerInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnPayment_tblCustomerInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerInvoiceDetail_tblStock" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoiceDetail_tblCustomerInvoiceDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerPayment_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoice_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoiceDetail_tblCustomerReturnInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnPayment_tblCustomerReturnInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnInvoiceDetail_tblStock" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblCustomerReturnPayment_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPayroll_tblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblFinancialYear_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransaction_tblFinancialYear" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransection_tblFinancialYear" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPayroll_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPurchaseCartDetail_tblStock" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblPurchaseCartDetail_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSaleCartDetail_tblStock1" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSaleCartDetail_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblStock_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierInvoiceDetail_tblStock" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplier_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierInvoiceTable_tblSupplier" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierPayment_tblSupplier" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierReturnInvoice_tblSupplier" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierInvoice_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierInvoiceDetail_tblSupplierInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierReturnInvoice_tblSupplierInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierPayment_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblSupplierReturnPayment_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblTransaction_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BussinessERPDbModel1.FK_tblUser_tblUserType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

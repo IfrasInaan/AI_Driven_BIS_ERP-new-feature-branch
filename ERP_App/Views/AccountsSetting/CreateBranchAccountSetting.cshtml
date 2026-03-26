@@ -1,0 +1,96 @@
+﻿@model ERP_App.Models.AccountSettingMV
+
+@{
+    ViewBag.Title = "Account Setting";
+}
+
+<div class="col-lg-6">
+    <div class="card card-default mb-6">
+        <div class="card-header">Set Account Setting</div>
+        <div class="card-body">
+            @using (Html.BeginForm("CreateBranchAccountSetting", "AccountsSetting", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(u => u.BranchID)
+                    @Html.HiddenFor(u => u.CompanyID)                 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccountHeadID, "Account Head", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AccountHeadID", null, "--Select--", htmlAttributes: new { @class = "form-control", @onchange = "myFunction();" })
+                            @Html.ValidationMessageFor(model => model.AccountHeadID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccountControlID, "Account Control", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AccountControlID", null, "--Select--", htmlAttributes: new { @class = "form-control", @onchange = "getsubcontrolbycontrolid();" })
+                            @Html.ValidationMessageFor(model => model.AccountControlID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccountSubControlID, "Account Sub Control", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AccountSubControlID", null, "--Select--", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AccountSubControlID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccountActivityID, "Account Activity", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AccountActivityID", null, "--Select--", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AccountActivityID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+ 
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-outline-success" />
+                            @Html.ActionLink("Back", "BranchAccountSetting", null, new { @class = "btn btn-outline-default" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function myFunction() {
+        var accountheadID = $("#AccountHeadID").val();
+        $.ajax({
+            type: "GET",
+            url: "/Accounts/GetAccountControls?accountheadID=" + accountheadID,
+            data: [],
+            success: function (data) {
+                var s = '<option value="-1" >--Select--</option> ';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].AccountControlID + '">' + data[i].AccountControlName + '</option >';
+                }
+                $("#AccountControlID").html(s);
+            }
+        });
+    };
+
+    function getsubcontrolbycontrolid() {
+        var accountControlID = $("#AccountControlID").val();
+        $.ajax({
+            type: "GET",
+            url: "/Accounts/GetAccountSubControls?accountControlID=" + accountControlID,
+            data: [],
+            success: function (data) {
+                var s = '<option value="-1" >--Select--</option> ';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].AccountSubControlID + '">' + data[i].AccountSubControlName + '</option >';
+                }
+                $("#AccountSubControlID").html(s);
+            }
+        });
+    };
+
+</script>

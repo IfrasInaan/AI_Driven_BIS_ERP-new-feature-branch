@@ -1,0 +1,32 @@
+﻿@model DatabaseLayer.tblCustomer
+
+@{
+    ViewBag.Title = "CustomerDemandDashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Demand Forecasting</h2>
+
+@using (Html.BeginForm("CustomerDemandDashBoard", "PythonDemandForecasting", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="invoiceDate">Select Month:</label>
+        <input type="month" id="invoiceDate" name="invoiceDate" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="customerName">Select Customer:</label>
+        @Html.DropDownList("customerName", ViewBag.Customers as SelectList, "Select Customer", new { @class = "form-control", required = "required" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Predict Demand</button>
+}
+
+@if (ViewBag.PredictedDemand != null)
+{
+    <div class="alert alert-info" style="margin-top:20px;">
+        <strong>@ViewBag.PredictedDemand</strong>
+    </div>
+}

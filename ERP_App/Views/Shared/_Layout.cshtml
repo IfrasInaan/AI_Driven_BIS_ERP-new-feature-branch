@@ -1,0 +1,1167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin App + jQuery">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <title>@ViewBag.Title - ERP</title>
+    <!-- =============== VENDOR STYLES ===============-->
+    <!-- FONT AWESOME-->
+
+    <link rel="stylesheet" href="~/Content/Template/vendor/font-awesome/css/font-awesome.css">
+    <!-- SIMPLE LINE ICONS-->
+    <link rel="stylesheet" href="~/Content/Template/vendor/simple-line-icons/css/simple-line-icons.css">
+    <!-- ANIMATE.CSS-->
+    <link rel="stylesheet" href="~/Content/Template/vendor/animate.css/animate.css">
+    <!-- WHIRL (spinners)-->
+    <link rel="stylesheet" href="~/Content/Template/vendor/whirl/dist/whirl.css">
+    <!-- =============== PAGE VENDOR STYLES ===============-->
+    <!-- WEATHER ICONS-->
+    <link rel="stylesheet" href="~/Content/Template/vendor/weather-icons/css/weather-icons.css">
+    <!-- Datatables-->
+    <link rel="stylesheet" href="~/Content/Template/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/Content/Template/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/Content/Template/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="~/Content/Template/css/bootstrap.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="~/Content/Template/css/app.css" id="maincss">
+
+    <link href="~/Content//bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        /* Remove underlines from all sidebar links */
+        .sidebar-nav a,
+        .sidebar-nav a:hover,
+        .sidebar-nav a:focus,
+        .sidebar-nav a:active {
+            text-decoration: none;
+        }
+
+        /* If using Bootstrap nav */
+        .nav-link {
+            text-decoration: none !important;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+            <!-- START Top Navbar-->
+            <nav class="navbar topnavbar">
+                <!-- START navbar header-->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#/">
+                        <div class="brand-logo">
+                            <img class="img-fluid" src="~/Content/Template/img/erp Login Icon.png" alt="App Logo"  style="max-height: 50px;">
+                        </div>
+                        <div class="brand-logo-collapsed">
+                            <img class="img-fluid" src="~/Content/Template/img/erp Login Icon.png" alt="App Logo">
+                        </div>
+                    </a>
+                </div>
+                <!-- END navbar header-->
+                <!-- START Left navbar-->
+                <ul class="navbar-nav mr-auto flex-row">
+                    <li class="nav-item">
+                        <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                        <a class="nav-link d-none d-md-block d-lg-block d-xl-block" href="#" data-trigger-resize="" data-toggle-state="aside-collapsed">
+                            <em class="fa fa-navicon"></em>
+                        </a>
+                        <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                        <a class="nav-link sidebar-toggle d-md-none" href="#" data-toggle-state="aside-toggled" data-no-persist="true">
+                            <em class="fa fa-navicon"></em>
+                        </a>
+                    </li>
+                    <!-- START User avatar toggle-->
+                    <li class="nav-item d-none d-md-block">
+                        <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                        <a class="nav-link" id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                            <em class="icon-user"></em>
+                        </a>
+                    </li>
+                    <!-- END User avatar toggle-->
+                    <!-- START lock screen-->
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="@Url.Content("~/Home/Logout")" title="Lock screen">
+                            <em class="icon-lock"></em>
+                        </a>
+                    </li>
+                    <!-- END lock screen-->
+                </ul>
+                <!-- END Left navbar-->
+                <!-- START Right Navbar-->
+                <ul class="navbar-nav flex-row">
+                    <!-- Search icon-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-search-open="">
+                            <em class="icon-magnifier"></em>
+                        </a>
+                    </li>
+                    <!-- Fullscreen (only desktops)-->
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="#" data-toggle-fullscreen="">
+                            <em class="fa fa-expand"></em>
+                        </a>
+                    </li>
+                    <!-- START Alert menu-->
+                    <li class="nav-item dropdown dropdown-list">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-toggle="dropdown">
+                            <em class="icon-bell"></em>
+                            <span class="badge badge-danger">11</span>
+                        </a>
+                        <!-- START Dropdown menu-->
+                        <div class="dropdown-menu dropdown-menu-right animated flipInX">
+                            <div class="dropdown-item">
+                                <!-- START list group-->
+                                <div class="list-group">
+                                    <!-- list item-->
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="media">
+                                            <div class="align-self-start mr-2">
+                                                <em class="fa fa-twitter fa-2x text-info"></em>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="m-0">New followers</p>
+                                                <p class="m-0 text-muted text-sm">1 new follower</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- list item-->
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="media">
+                                            <div class="align-self-start mr-2">
+                                                <em class="fa fa-envelope fa-2x text-warning"></em>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="m-0">New e-mails</p>
+                                                <p class="m-0 text-muted text-sm">You have 10 new emails</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- list item-->
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="media">
+                                            <div class="align-self-start mr-2">
+                                                <em class="fa fa-tasks fa-2x text-success"></em>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="m-0">Pending Tasks</p>
+                                                <p class="m-0 text-muted text-sm">11 pending task</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- last list item-->
+                                    <div class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center">
+                                            <span class="text-sm">More notifications</span>
+                                            <span class="badge badge-danger ml-auto">14</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- END list group-->
+                            </div>
+                        </div>
+                        <!-- END Dropdown menu-->
+                    </li>
+                    <!-- END Alert menu-->
+                    <!-- START Offsidebar button-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle-state="offsidebar-open" data-no-persist="true">
+                            <em class="icon-notebook"></em>
+                        </a>
+                    </li>
+                    <!-- END Offsidebar menu-->
+                </ul>
+                <!-- END Right Navbar-->
+                <!-- START Search form-->
+                <form class="navbar-form" role="search" action="search.html">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Type and hit enter ...">
+                        <div class="fa fa-times navbar-form-close" data-search-dismiss=""></div>
+                    </div>
+                    <button class="d-none" type="submit">Submit</button>
+                </form>
+                <!-- END Search form-->
+            </nav>
+            <!-- END Top Navbar-->
+        </header>
+        <!-- sidebar-->
+        @{
+            int usertypeid = 0;
+            int.TryParse(Convert.ToString(Session["UserTypeID"]), out usertypeid);
+            <aside class="aside-container">
+                <!-- START Sidebar (left)-->
+                <div class="aside-inner">
+                    <nav class="sidebar" data-sidebar-anyclick-close="">
+                        <!-- START sidebar nav-->
+                        <ul class="sidebar-nav">
+                            <!-- START user info-->
+                            <li class="has-user-block">
+                                <div class="collapse" id="user-block">
+                                    <div class="item user-block">
+                                        <!-- User picture-->
+                                        <div class="user-block-picture">
+                                            <div class="user-block-status">
+                                                <img class="img-thumbnail rounded-circle" src="~/Content/Template/img/user/02.jpg" alt="Avatar" width="60" height="60">
+                                                <div class="circle bg-success circle-lg"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Name and Job-->
+                                        <div class="user-block-info">
+                                            <span class="user-block-name">@Session["UserName"], @Session["Email"]</span>
+                                            <span class="user-block-role">@Session["UserType"], <span class="text-success"><strong>@Session["IsActive"]</strong></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- END user info-->
+                            <!-- Iterates over all sidebar items-->
+
+                            <li class="nav-heading ">
+                                <span data-localize="sidebar.heading.HEADER">Main Navigation</span>
+                            </li>
+                            @if (usertypeid == 1 || usertypeid == 2)
+                            {
+                                <li class=" ">
+                                    <a href="#dashboard" title="Dashboard" data-toggle="collapse">
+                                        <div class="float-right badge badge-success">3</div>
+                                        <em class="icon-speedometer"></em>
+                                        <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="dashboard">
+                                        <li class="sidebar-subnav-header">Dashboard</li>
+                                        <li class=" active">
+                                            <a href="dashboard_v2.html" title="Dashboard v1">
+                                                <span>Admin Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="dashboard_v2.html" title="Dashboard v2">
+                                                <span>Dashboard v2</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="dashboard_v3.html" title="Dashboard v3">
+                                                <span>Dashboard v3</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (usertypeid > 2)
+                            {
+                                <li class=" ">
+                                    <a href="#dashboard" title="Dashboard" data-toggle="collapse">
+                                        <div class="float-right badge badge-success">3</div>
+                                        <em class="icon-speedometer"></em>
+                                        <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="dashboard">
+                                        <li class="sidebar-subnav-header">Dashboard</li>
+                                        <li class=" active">
+                                            <a href="@Url.Content("~/Dashboard/HeadOffice")" title="Branch Dashboard">
+                                                <span>Branch Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="dashboard_v2.html" title="Dashboard v2">
+                                                <span>Dashboard v2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            <li class=" ">
+                                <a href="widgets.html" title="Widgets">
+                                    <div class="float-right badge badge-success">30</div>
+                                    <em class="icon-grid"></em>
+                                    <span data-localize="sidebar.nav.WIDGETS">Widgets</span>
+                                </a>
+                            </li>
+                            @if (usertypeid == 1 || usertypeid == 2)
+                            {
+                                <li class=" ">
+                                    <a href="#layout" title="Layouts" data-toggle="collapse">
+                                        <em class="icon-layers"></em>
+                                        <span>Demand Forecast</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="layout">
+                                        <li class="sidebar-subnav-header">Demand Forecast</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Python/RunPython")" title="Horizontal">
+                                                <span>Simple Test Python</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecastingController/ProductDemandDashBoard")" title="Product Demand">
+                                                <span>Product Demand</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="dashboard_h.html" title="Sales_Forecast">
+                                                <span>Sales Forecast</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="dashboard_h.html" title="Vertical">
+                                                <span>Customer Demand</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="dashboard_h.html" title="Vertical">
+                                                <span>Vertical </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (usertypeid > 2)
+                            {
+                                <li class=" ">
+                                    <a href="#layout" title="Layouts" data-toggle="collapse">
+                                        <em class="icon-layers"></em>
+                                        <span>Demand Forecast</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="layout">
+                                        <li class="sidebar-subnav-header">Demand Forecast</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Python/RunPython")" title="Horizontal">
+                                                <span>Simple Test Python</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecasting/ProductDemandDashBoard")" title="Product Demand">
+                                                <span>Product Demand</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecasting/SupplierDemandDashboard")" title="Supplier Demand">
+                                                <span>Supplier Demand</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecasting/CustomerDemandDashBoard")" title="Customer Demand">
+                                                <span>Customer Demand</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecasting/BranchSalesDemand")" title="Sales Forecast(Branch)">
+                                                <span>Sales Forecast(Branch)</span>
+                                            </a>
+                                        </li>
+
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecasting/PurchaseDemandDashboardQty")" title="Purchase Forecast(Qty)">
+                                                <span>Purchase Forecast(Qty)</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/PythonDemandForecasting/PurchaseDemandDashboardCost")" title="Purchase Forecast(Cost)">
+                                                <span>Purchase Forecast(Cost) </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            <li class="nav-heading ">
+                                <span data-localize="sidebar.heading.COMPONENTS">Components</span>
+                            </li>
+                            <li class=" ">
+                                <a href="#elements" title="Elements" data-toggle="collapse">
+                                    <em class="icon-chemistry"></em>
+                                    <span data-localize="sidebar.nav.element.ELEMENTS">User</span>
+                                </a>
+                                <ul class="sidebar-nav sidebar-subnav collapse" id="elements">
+
+                                    @if (usertypeid == 1 || usertypeid == 2)
+                                    {
+                                        <li class="sidebar-subnav-header">User Setting</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/User/AllUserTypes")" title="Buttons">
+                                                <span data-localize="sidebar.nav.element.BUTTON">User Types</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="notifications.html" title="Notifications">
+                                                <span data-localize="sidebar.nav.element.NOTIFICATION">Notifications</span>
+                                            </a>
+                                        </li>
+                                    }
+
+
+                                </ul>
+                            </li>
+                            @if (usertypeid == 1 || usertypeid == 2)
+                            {
+                                <li class=" ">
+                                    <a href="#forms" title="Forms" data-toggle="collapse">
+                                        <em class="icon-note"></em>
+                                        <span data-localize="sidebar.nav.form.FORM">Companies</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="forms">
+                                        <li class="sidebar-subnav-header">Companies</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Company/Companies")" title="Standard">
+                                                <span data-localize="sidebar.nav.form.STANDARD">All Companies</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/AdminConfig/AllBranchTypes")" title="Extended">
+                                                <span data-localize="sidebar.nav.form.EXTENDED">Branch Types</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-validation.html" title="Validation">
+                                                <span data-localize="sidebar.nav.form.VALIDATION">Validation</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-wizard.html" title="Wizard">
+                                                <span>Wizard</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-upload.html" title="Upload">
+                                                <span>Upload</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-xeditable.html" title="xEditable">
+                                                <span>xEditable</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-imagecrop.html" title="Cropper">
+                                                <span>Cropper</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            }
+                            @if (usertypeid == 1 || usertypeid == 2)
+                            {
+                                <li class=" ">
+                                    <a href="#forms" title="Forms" data-toggle="collapse">
+                                        <em class="icon-note"></em>
+                                        <span data-localize="sidebar.nav.form.FORM">Demand Forecast</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="forms">
+                                        <li class="sidebar-subnav-header">Demand Forecast</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Python/RunPython")" title="Standard">
+                                                <span data-localize="sidebar.nav.form.STANDARD">Simple Test Python</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/AdminConfig/AllBranchTypes")" title="Extended">
+                                                <span data-localize="sidebar.nav.form.EXTENDED">Branch Types</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-validation.html" title="Validation">
+                                                <span data-localize="sidebar.nav.form.VALIDATION">Product Demand</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-wizard.html" title="Wizard">
+                                                <span>Sales Forecast</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="form-upload.html" title="Upload">
+                                                <span>Customer Demand</span>
+                                            </a>
+
+                                    </ul>
+                                </li>
+                            }
+                            @* Account Setting *@
+
+                            <li class=" ">
+                                <a href="#charts" title="Charts" data-toggle="collapse">
+                                    <em class="icon-graph"></em>
+                                    <span data-localize="sidebar.nav.chart.CHART">Accounts</span>
+                                </a>
+                                <ul class="sidebar-nav sidebar-subnav collapse" id="charts">
+                                    <li class="sidebar-subnav-header">Setting</li>
+                                    @if (usertypeid == 1 || usertypeid == 2)
+                                    {
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/AdminConfig/AllAccountActivity")" title="Flot">
+                                                <span data-localize="sidebar.nav.chart.FLOT">Account Activity</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/AdminConfig/AllAccountHeads")" title="Radial">
+                                                <span data-localize="sidebar.nav.chart.RADIAL">Account Heads</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/AdminConfig/AllFinanicalYears")" title="Chart JS">
+                                                <span>Financial Year's</span>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (usertypeid > 2)
+                                    {
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Accounts/AllAccountControls/")" title="All Accounts Control">
+                                                <span>Accounts Controls</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Accounts/AllAccountSubControls/")" title="All Accounts Control">
+                                                <span>Account Sub Controls</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/AccountsSetting/BranchAccountSetting")" title="Account Flow Setting">
+                                                <span>Account Flow Setting</span>
+                                            </a>
+                                        </li>
+
+                                        <li class=" ">
+                                            <a href="chart-chartist.html" title="Chartist">
+                                                <span>Chartist</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                            }
+                            @if (usertypeid > 2)
+                            {
+                                <li class=" ">
+                                    <a href="#tables" title="Tables" data-toggle="collapse">
+                                        <em class="icon-grid"></em>
+                                        <span data-localize="sidebar.nav.table.TABLE">Branchs</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="tables">
+                                        <li class="sidebar-subnav-header">Setting</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Branch/AllCompanyBranchs")" title="Company Branchs">
+                                                <span data-localize="sidebar.nav.table.STANDARD">Branch's'</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Employee/BranchEmployees")" title="Employees">
+                                                <span data-localize="sidebar.nav.table.EXTENDED">Employees</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="table-datatable.html" title="DataTables">
+                                                <span data-localize="sidebar.nav.table.DATATABLE">DataTables</span>
+                                            </a>
+                                        </li>
+                                     
+                                    </ul>
+                                </li>
+                            }
+                            @if (usertypeid > 2)
+                            {
+                                <li class=" ">
+                                    <a href="#maps" title="Stock" data-toggle="collapse">
+                                        <em class="icon-map"></em>
+                                        <span data-localize="sidebar.nav.map.MAP">Stock</span>
+                                    </a>
+                                    <ul class="sidebar-nav sidebar-subnav collapse" id="maps">
+                                        <li class="sidebar-subnav-header">Stock</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Stock/AllCategories")" title="Stock Categories">
+                                                <span data-localize="sidebar.nav.map.GOOGLE">Categories</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Stock/StockProducts")" title="Stock Item's">
+                                                <span data-localize="sidebar.nav.map.VECTOR">Products</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            <li class="nav-heading ">
+                                <span data-localize="sidebar.heading.MORE">Customer</span>
+                            </li>
+                            <li class=" ">
+                                <a href="#pages" title="Customer" data-toggle="collapse">
+                                    <em class="icon-doc"></em>
+                                    <span data-localize="sidebar.nav.pages.PAGES">Customer</span>
+                                </a>
+                                <ul class="sidebar-nav sidebar-subnav collapse" id="pages">
+                                    @if (usertypeid > 2)
+                                    {
+                                        <li class="sidebar-subnav-header">Pages</li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/Customer/AllBranchCustomer")" title="Login">
+                                                <span data-localize="sidebar.nav.pages.LOGIN">Customer</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/CustomerInvoice/SaleCart")" title="Customer Invoice">
+                                                <span data-localize="sidebar.nav.pages.REGISTER">Customer Invoice</span>
+                                            </a>
+                                        </li>
+
+                                        <li class=" ">
+                                            <a href="@Url.Content("~/CustomerInvoice/AllSales")" title="Invoice Summary">
+                                                <span>Inv Summary (All Sales)</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                            <li class=" ">
+                                <a href="#extras" title="Supplier" data-toggle="collapse">
+                                    <em class="icon-cup"></em>
+                                    <span data-localize="sidebar.nav.extra.EXTRA">Purchase</span>
+                                </a>
+                                <ul class="sidebar-nav sidebar-subnav collapse" id="extras">
+                                    <li class="sidebar-subnav-header">Purchase</li>
+                                    <li class=" ">
+                                        <a href="#blog" title="Blog" data-toggle="collapse">
+                                            <em class="fa fa-angle-right"></em>
+                                            <span>Supplier</span>
+                                        </a>
+                                        <ul class="sidebar-nav sidebar-subnav collapse" id="blog">
+                                            @if (usertypeid > 2)
+                                            {
+                                                <li class="sidebar-subnav-header">Supplier</li>
+                                                <li class=" ">
+                                                    <a href="@Url.Content("~/Supplier/AllBranchSupplier")" title="Supplier">
+                                                        <span>Supplier</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="blog-post.html" title="Post">
+                                                        <span>Post</span>
+                                                    </a>
+                                                </li>
+                                                
+                                            }
+                                        </ul>
+                                    </li>                                   
+                                    
+                                    <li class=" ">
+                                        <a href="@Url.Content("~/Purchase/PurchaseStockProducts")" title="New Purchase">
+                                            <span>New Purchase</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="@Url.Content("~/Purchase/AllPurchases")" title="All Purchases">
+                                            <span>All Purchases Orders</span>
+                                        </a>
+                                    </li>
+
+
+                                    <li class=" ">
+                                        <a href="plans.html" title="Plans">
+                                            <span>Plans</span>
+                                        </a>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                            </li>
+
+                            <li class=" ">
+                                <a href="#multilevel" title="Multilevel" data-toggle="collapse">
+                                    <em class="fa fa-folder-open-o"></em>
+                                    <span>Multilevel</span>
+                                </a>
+                                <ul class="sidebar-nav sidebar-subnav collapse" id="multilevel">
+                                    <li class="sidebar-subnav-header">Multilevel</li>
+                                    <li class=" ">
+                                        <a href="#level1" title="Level 1" data-toggle="collapse">
+                                            <span>Level 1</span>
+                                        </a>
+                                        <ul class="sidebar-nav sidebar-subnav collapse" id="level1">
+                                            <li class="sidebar-subnav-header">Level 1</li>
+                                            <li class=" ">
+                                                <a href="multilevel-1.html" title="Level1 Item">
+                                                    <span>Level1 Item</span>
+                                                </a>
+                                            </li>
+                                            <li class=" ">
+                                                <a href="#level2" title="Level 2" data-toggle="collapse">
+                                                    <span>Level 2</span>
+                                                </a>
+                                                <ul class="sidebar-nav sidebar-subnav collapse" id="level2">
+                                                    <li class="sidebar-subnav-header">Level 2</li>
+                                                    <li class=" ">
+                                                        <a href="#level3" title="Level 3" data-toggle="collapse">
+                                                            <span>Level 3</span>
+                                                        </a>
+                                                        <ul class="sidebar-nav sidebar-subnav collapse" id="level3">
+                                                            <li class="sidebar-subnav-header">Level 3</li>
+                                                            <li class=" ">
+                                                                <a href="multilevel-3.html" title="Level3 Item">
+                                                                    <span>Level3 Item</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class=" ">
+                                <a href="documentation.html" title="Documentation">
+                                    <em class="icon-graduation"></em>
+                                    <span data-localize="sidebar.nav.DOCUMENTATION">Documentation</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- END sidebar nav-->
+                    </nav>
+                </div>
+                <!-- END Sidebar (left)-->
+            </aside>
+        }
+        <!-- offsidebar-->
+        <aside class="offsidebar d-none">
+            <!-- START Off Sidebar (right)-->
+            <nav>
+                <div role="tabpanel">
+                    <!-- Nav tabs-->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="#app-settings" aria-controls="app-settings" role="tab" data-toggle="tab">
+                                <em class="icon-equalizer fa-lg"></em>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="#app-chat" aria-controls="app-chat" role="tab" data-toggle="tab">
+                                <em class="icon-user fa-lg"></em>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes-->
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="app-settings" role="tabpanel">
+                            <h3 class="text-center text-thin mt-4">Settings</h3>
+                            <div class="p-2">
+                                <h4 class="text-muted text-thin">Themes</h4>
+                                <div class="row row-flush mb-2">
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-a.css">
+                                                <input type="radio" name="setting-theme" checked="checked">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-info"></span>
+                                                    <span class="color bg-info-light"></span>
+                                                </span>
+                                                <span class="color bg-white"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-b.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-green"></span>
+                                                    <span class="color bg-green-light"></span>
+                                                </span>
+                                                <span class="color bg-white"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-c.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-purple"></span>
+                                                    <span class="color bg-purple-light"></span>
+                                                </span>
+                                                <span class="color bg-white"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-d.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-danger"></span>
+                                                    <span class="color bg-danger-light"></span>
+                                                </span>
+                                                <span class="color bg-white"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-flush mb-2">
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-e.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-info-dark"></span>
+                                                    <span class="color bg-info"></span>
+                                                </span>
+                                                <span class="color bg-gray-dark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-f.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-green-dark"></span>
+                                                    <span class="color bg-green"></span>
+                                                </span>
+                                                <span class="color bg-gray-dark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-g.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-purple-dark"></span>
+                                                    <span class="color bg-purple"></span>
+                                                </span>
+                                                <span class="color bg-gray-dark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <div class="setting-color">
+                                            <label data-load-css="css/theme-h.css">
+                                                <input type="radio" name="setting-theme">
+                                                <span class="icon-check"></span>
+                                                <span class="split">
+                                                    <span class="color bg-danger-dark"></span>
+                                                    <span class="color bg-danger"></span>
+                                                </span>
+                                                <span class="color bg-gray-dark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <h4 class="text-muted text-thin">Layout</h4>
+                                <div class="clearfix">
+                                    <p class="float-left">Fixed</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-fixed" type="checkbox" data-toggle-state="layout-fixed">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <p class="float-left">Boxed</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-boxed" type="checkbox" data-toggle-state="layout-boxed">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <p class="float-left">RTL</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-rtl" type="checkbox">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <h4 class="text-muted text-thin">Aside</h4>
+                                <div class="clearfix">
+                                    <p class="float-left">Collapsed</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-collapsed" type="checkbox" data-toggle-state="aside-collapsed">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <p class="float-left">Collapsed Text</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-collapsed-text" type="checkbox" data-toggle-state="aside-collapsed-text">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <p class="float-left">Float</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-float" type="checkbox" data-toggle-state="aside-float">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <p class="float-left">Hover</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-hover" type="checkbox" data-toggle-state="aside-hover">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <p class="float-left">Show Scrollbar</p>
+                                    <div class="float-right">
+                                        <label class="switch">
+                                            <input id="chk-scroll" type="checkbox" data-toggle-state="show-scrollbar" data-target=".sidebar">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="app-chat" role="tabpanel">
+                            <h3 class="text-center text-thin mt-4">Connections</h3>
+                            <div class="list-group">
+                                <!-- START list title-->
+                                <div class="list-group-item border-0">
+                                    <small class="text-muted">ONLINE</small>
+                                </div>
+                                <!-- END list title-->
+                                <div class="list-group-item list-group-item-action border-0">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3 rounded-circle thumb48" src="~/Content/Template/img/user/05.jpg" alt="Image">
+                                        <div class="media-body text-truncate">
+                                            <a href="#">
+                                                <strong>Juan Sims</strong>
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Designeer</small>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <span class="circle bg-success circle-lg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action border-0">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3 rounded-circle thumb48" src="~/Content/Template/img/user/06.jpg" alt="Image">
+                                        <div class="media-body text-truncate">
+                                            <a href="#">
+                                                <strong>Maureen Jenkins</strong>
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Designeer</small>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <span class="circle bg-success circle-lg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action border-0">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3 rounded-circle thumb48" src="~/Content/Template/img/user/07.jpg" alt="Image">
+                                        <div class="media-body text-truncate">
+                                            <a href="#">
+                                                <strong>Billie Dunn</strong>
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Designeer</small>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <span class="circle bg-danger circle-lg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action border-0">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3 rounded-circle thumb48" src="~/Content/Template/img/user/08.jpg" alt="Image">
+                                        <div class="media-body text-truncate">
+                                            <a href="#">
+                                                <strong>Tomothy Roberts</strong>
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Designeer</small>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <span class="circle bg-warning circle-lg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- START list title-->
+                                <div class="list-group-item border-0">
+                                    <small class="text-muted">OFFLINE</small>
+                                </div>
+                                <!-- END list title-->
+                                <div class="list-group-item list-group-item-action border-0">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3 rounded-circle thumb48" src="~/Content/Template/img/user/09.jpg" alt="Image">
+                                        <div class="media-body text-truncate">
+                                            <a href="#">
+                                                <strong>Lawrence Robinson</strong>
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Designeer</small>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <span class="circle bg-warning circle-lg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action border-0">
+                                    <div class="media">
+                                        <img class="align-self-center mr-3 rounded-circle thumb48" src="~/Content/Template/img/user/10.jpg" alt="Image">
+                                        <div class="media-body text-truncate">
+                                            <a href="#">
+                                                <strong>Tyrone Owens</strong>
+                                            </a>
+                                            <br>
+                                            <small class="text-muted">Designeer</small>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <span class="circle bg-warning circle-lg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-3 py-4 text-center">
+                                <!-- Optional link to list more users-->
+                                <a class="btn btn-purple btn-sm" href="#" title="See more contacts">
+                                    <strong>Load more..</strong>
+                                </a>
+                            </div>
+                            <!-- Extra items-->
+                            <div class="px-3 py-2">
+                                <p>
+                                    <small class="text-muted">Tasks completion</small>
+                                </p>
+                                <div class="progress progress-xs m-0">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                        <span class="sr-only">80% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-3 py-2">
+                                <p>
+                                    <small class="text-muted">Upload quota</small>
+                                </p>
+                                <div class="progress progress-xs m-0">
+                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                                        <span class="sr-only">40% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- END Off Sidebar (right)-->
+        </aside>
+
+        <section class="section-container">
+            <!-- Page content-->
+            <div class="content-wrapper">
+                <div class="content-heading">
+                    <div>
+                        Dashboard
+                        <small data-localize="dashboard.WELCOME"></small>
+                    </div>
+                    <!-- START Language list-->
+                    <div class="ml-auto">
+                        <div class="btn-group">
+                            <button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>
+                            <div class="dropdown-menu dropdown-menu-right-forced animated fadeInUpShort" role="menu">
+                                <a class="dropdown-item" href="#" data-set-lang="en">English</a><a class="dropdown-item" href="#" data-set-lang="es">Spanish</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Language list-->
+                </div>
+
+                <!-- Main section-->
+
+                @RenderBody()
+            </div>
+        </section>
+
+        <hr />
+        <!-- Page footer-->
+        <footer class="footer-container">
+            <span>&copy; 2025 - ERP Business</span>
+        </footer>
+    </div>
+
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <!-- MODERNIZR-->
+    <script src="~/Content/Template/vendor/modernizr/modernizr.custom.js"></script>
+    <!-- JQUERY-->
+    <script src="~/Content/Template/vendor/jquery/dist/jquery.js"></script>
+    <!-- BOOTSTRAP-->
+    <script src="~/Content/Template/vendor/popper.js/dist/umd/popper.js"></script>
+    <script src="~/Content/Template/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- STORAGE API-->
+    <script src="~/Content/Template/vendor/js-storage/js.storage.js"></script>
+    <!-- JQUERY EASING-->
+    <script src="~/Content/Template/vendor/jquery.easing/jquery.easing.js"></script>
+    <!-- ANIMO-->
+    <script src="vendor/animo/animo.js"></script>
+    <!-- SCREENFULL-->
+    <script src="~/Content/Template/vendor/screenfull/dist/screenfull.js"></script>
+    <!-- LOCALIZE-->
+    <script src="~/Content/Template/vendor/jquery-localize/dist/jquery.localize.js"></script>
+    <!-- =============== PAGE VENDOR SCRIPTS ===============-->
+    <!-- SLIMSCROLL-->
+    <script src="~/Content/Template/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- SPARKLINE-->
+    <script src="~/Content/Template/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+    <!-- FLOT CHART-->
+    <script src="~/Content/Template/vendor/flot/jquery.flot.js"></script>
+    <script src="~/Content/Template/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
+    <script src="~/Content/Template/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="~/Content/Template/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="~/Content/Template/vendor/flot/jquery.flot.time.js"></script>
+    <script src="~/Content/Template/vendor/flot/jquery.flot.categories.js"></script>
+    <script src="~/Content/Template/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
+    <!-- EASY PIE CHART-->
+    <script src="~/Content/Template/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
+    <!-- MOMENT JS-->
+    <script src="~/Content/Template/vendor/moment/min/moment-with-locales.js"></script>
+    <!-- Datatables-->
+    <script src="~/Content/Template/vendor/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-buttons/js/buttons.colVis.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-buttons/js/buttons.flash.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-buttons/js/buttons.html5.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-buttons/js/buttons.print.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-keytable/js/dataTables.keyTable.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-responsive/js/dataTables.responsive.js"></script>
+    <script src="~/Content/Template/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Content/Template/vendor/jszip/dist/jszip.js"></script>
+    <script src="~/Content/Template/vendor/pdfmake/build/pdfmake.js"></script>
+    <script src="~/Content/Template/vendor/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- =============== APP SCRIPTS ===============-->
+    <script src="~/Content/Template/js/app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

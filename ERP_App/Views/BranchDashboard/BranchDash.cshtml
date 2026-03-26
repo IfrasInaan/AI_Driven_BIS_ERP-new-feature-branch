@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "BranchDash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Business Overview Dashboard</h2>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Suppliers</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalSuppliers</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalProducts</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Purchase Orders</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalPurchaseOrders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Invoices</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalCustomerInvoices</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-4">
+        <div class="col-md-6">
+            <div class="card border-dark shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Total Revenue</h5>
+                    <p class="card-text fs-3 text-success">Rs. @ViewBag.TotalRevenue.ToString("N2")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<canvas id="chartOrders" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('chartOrders').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Suppliers', 'Products', 'Purchase Orders', 'Invoices'],
+            datasets: [{
+                label: 'Count',
+                data: [
+                    @ViewBag.TotalSuppliers,
+                    @ViewBag.TotalProducts,
+                    @ViewBag.TotalPurchaseOrders,
+                    @ViewBag.TotalCustomerInvoices
+                ],
+                backgroundColor: ['#0d6efd', '#198754', '#0dcaf0', '#ffc107']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+

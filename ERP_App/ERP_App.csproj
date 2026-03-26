@@ -1,0 +1,616 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC98170A-D58A-46C5-92CF-D8FAF0C757B0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP_App</RootNamespace>
+    <AssemblyName>ERP_App</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=3.4.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.3.4.2\lib\net462\IronPython.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Dynamic, Version=1.3.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.5\lib\net462\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.3.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.5\lib\net462\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.3.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.5\lib\net462\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Python.Runtime, Version=3.0.5.0, Culture=neutral, PublicKeyToken=5000fea6cba702dd, processorArchitecture=MSIL">
+      <HintPath>..\packages\pythonnet.3.0.5\lib\netstandard2.0\Python.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\Template\css\app-rtl.css" />
+    <Content Include="Content\Template\css\app.css" />
+    <Content Include="Content\Template\css\bootstrap-rtl.css" />
+    <Content Include="Content\Template\css\bootstrap.css" />
+    <Content Include="Content\Template\css\theme-a.css" />
+    <Content Include="Content\Template\css\theme-b.css" />
+    <Content Include="Content\Template\css\theme-c.css" />
+    <Content Include="Content\Template\css\theme-d.css" />
+    <Content Include="Content\Template\css\theme-e.css" />
+    <Content Include="Content\Template\css\theme-f.css" />
+    <Content Include="Content\Template\css\theme-g.css" />
+    <Content Include="Content\Template\css\theme-h.css" />
+    <Content Include="Content\Template\img\bg1.jpg" />
+    <Content Include="Content\Template\img\bg10.jpg" />
+    <Content Include="Content\Template\img\bg2.jpg" />
+    <Content Include="Content\Template\img\bg3.jpg" />
+    <Content Include="Content\Template\img\bg4.jpg" />
+    <Content Include="Content\Template\img\bg5.jpg" />
+    <Content Include="Content\Template\img\bg6.jpg" />
+    <Content Include="Content\Template\img\bg7.jpg" />
+    <Content Include="Content\Template\img\bg8.jpg" />
+    <Content Include="Content\Template\img\bg9.jpg" />
+    <Content Include="Content\Template\img\dummy.png" />
+    <Content Include="Content\Template\img\erp Login Icon.png" />
+    <Content Include="Content\Template\img\lock-bg.jpg" />
+    <Content Include="Content\Template\img\logo-single.png" />
+    <Content Include="Content\Template\img\logo.png" />
+    <Content Include="Content\Template\img\mb-sample.jpg" />
+    <Content Include="Content\Template\img\mockup.png" />
+    <Content Include="Content\Template\img\profile-bg.jpg" />
+    <Content Include="Content\Template\img\user\01.jpg" />
+    <Content Include="Content\Template\img\user\02.jpg" />
+    <Content Include="Content\Template\img\user\03.jpg" />
+    <Content Include="Content\Template\img\user\04.jpg" />
+    <Content Include="Content\Template\img\user\05.jpg" />
+    <Content Include="Content\Template\img\user\06.jpg" />
+    <Content Include="Content\Template\img\user\07.jpg" />
+    <Content Include="Content\Template\img\user\08.jpg" />
+    <Content Include="Content\Template\img\user\09.jpg" />
+    <Content Include="Content\Template\img\user\10.jpg" />
+    <Content Include="Content\Template\img\user\11.jpg" />
+    <Content Include="Content\Template\img\user\12.jpg" />
+    <Content Include="Content\Template\img\user\13.jpg" />
+    <Content Include="Content\Template\js\app.js" />
+    <Content Include="Content\Template\vendor\%40ttskch\select2-bootstrap4-theme\dist\select2-bootstrap4.css" />
+    <Content Include="Content\Template\vendor\animate.css\animate.css" />
+    <Content Include="Content\Template\vendor\animo\animo.js" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Content\Template\vendor\bootstrap-colorpicker\dist\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\Template\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
+    <Content Include="Content\Template\vendor\bootstrap-datepicker\dist\js\bootstrap-datepicker.js" />
+    <Content Include="Content\Template\vendor\bootstrap-filestyle\src\bootstrap-filestyle.js" />
+    <Content Include="Content\Template\vendor\bootstrap-slider\dist\bootstrap-slider.js" />
+    <Content Include="Content\Template\vendor\bootstrap-slider\dist\css\bootstrap-slider.css" />
+    <Content Include="Content\Template\vendor\bootstrap-tagsinput\dist\bootstrap-tagsinput.css" />
+    <Content Include="Content\Template\vendor\bootstrap-tagsinput\dist\bootstrap-tagsinput.js" />
+    <Content Include="Content\Template\vendor\bootstrap-wysiwyg\css\style.css" />
+    <Content Include="Content\Template\vendor\bootstrap-wysiwyg\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="Content\Template\vendor\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\Template\vendor\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Content\Template\vendor\chart.js\dist\Chart.js" />
+    <Content Include="Content\Template\vendor\chartist\dist\chartist.css" />
+    <Content Include="Content\Template\vendor\chartist\dist\chartist.js" />
+    <Content Include="Content\Template\vendor\chosen-js\chosen-sprite%402x.png" />
+    <Content Include="Content\Template\vendor\chosen-js\chosen-sprite.png" />
+    <Content Include="Content\Template\vendor\chosen-js\chosen.css" />
+    <Content Include="Content\Template\vendor\chosen-js\chosen.jquery.js" />
+    <Content Include="Content\Template\vendor\components-jqueryui\jquery-ui.js" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Template\vendor\components-jqueryui\themes\smoothness\jquery-ui.css" />
+    <Content Include="Content\Template\vendor\cropper\dist\cropper.css" />
+    <Content Include="Content\Template\vendor\cropper\dist\cropper.js" />
+    <Content Include="Content\Template\vendor\d3\d3.js" />
+    <Content Include="Content\Template\vendor\datatables.net-bs4\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\Template\vendor\datatables.net-bs4\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons-bs\css\buttons.bootstrap.css" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons-bs\js\buttons.bootstrap.js" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons\js\buttons.colVis.js" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons\js\buttons.flash.js" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons\js\buttons.html5.js" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons\js\buttons.print.js" />
+    <Content Include="Content\Template\vendor\datatables.net-buttons\js\dataTables.buttons.js" />
+    <Content Include="Content\Template\vendor\datatables.net-keytable-bs\css\keyTable.bootstrap.css" />
+    <Content Include="Content\Template\vendor\datatables.net-keytable\js\dataTables.keyTable.js" />
+    <Content Include="Content\Template\vendor\datatables.net-responsive-bs\css\responsive.bootstrap.css" />
+    <Content Include="Content\Template\vendor\datatables.net-responsive-bs\js\responsive.bootstrap.js" />
+    <Content Include="Content\Template\vendor\datatables.net-responsive\js\dataTables.responsive.js" />
+    <Content Include="Content\Template\vendor\datatables.net\js\jquery.dataTables.js" />
+    <Content Include="Content\Template\vendor\dropzone\dist\basic.css" />
+    <Content Include="Content\Template\vendor\dropzone\dist\dropzone.css" />
+    <Content Include="Content\Template\vendor\dropzone\dist\dropzone.js" />
+    <Content Include="Content\Template\vendor\easy-pie-chart\dist\jquery.easypiechart.js" />
+    <Content Include="Content\Template\vendor\fastclick\lib\fastclick.js" />
+    <Content Include="Content\Template\vendor\flatdoc\flatdoc.js" />
+    <Content Include="Content\Template\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="Content\Template\vendor\flot\jquery.flot.js" />
+    <Content Include="Content\Template\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="Content\Template\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="Content\Template\vendor\flot\jquery.flot.time.js" />
+    <Content Include="Content\Template\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Template\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Template\vendor\fullcalendar\dist\fullcalendar.css" />
+    <Content Include="Content\Template\vendor\fullcalendar\dist\fullcalendar.js" />
+    <Content Include="Content\Template\vendor\fullcalendar\dist\gcal.js" />
+    <Content Include="Content\Template\vendor\html5sortable\dist\html.sortable.js" />
+    <Content Include="Content\Template\vendor\ika.jvectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Content\Template\vendor\ika.jvectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Content\Template\vendor\ika.jvectormap\jquery-jvectormap-us-mill-en.js" />
+    <Content Include="Content\Template\vendor\ika.jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Content\Template\vendor\inputmask\dist\jquery.inputmask.bundle.js" />
+    <Content Include="Content\Template\vendor\jqcloud2\dist\jqcloud.css" />
+    <Content Include="Content\Template\vendor\jqcloud2\dist\jqcloud.js" />
+    <Content Include="Content\Template\vendor\jquery-bootgrid\dist\jquery.bootgrid.css" />
+    <Content Include="Content\Template\vendor\jquery-bootgrid\dist\jquery.bootgrid.fa.js" />
+    <Content Include="Content\Template\vendor\jquery-bootgrid\dist\jquery.bootgrid.js" />
+    <Content Include="Content\Template\vendor\jquery-knob\dist\jquery.knob.min.js" />
+    <Content Include="Content\Template\vendor\jquery-localize\dist\jquery.localize.js" />
+    <Content Include="Content\Template\vendor\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="Content\Template\vendor\jquery-sparkline\jquery.sparkline.js" />
+    <Content Include="Content\Template\vendor\jquery-steps\build\jquery.steps.js" />
+    <Content Include="Content\Template\vendor\jquery-validation\dist\additional-methods.js" />
+    <Content Include="Content\Template\vendor\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="Content\Template\vendor\jquery.easing\jquery.easing.js" />
+    <Content Include="Content\Template\vendor\jquery.flot.spline\jquery.flot.spline.js" />
+    <Content Include="Content\Template\vendor\jquery.flot.tooltip\js\jquery.flot.tooltip.js" />
+    <Content Include="Content\Template\vendor\jquery.gmap\jquery.gmap.js" />
+    <Content Include="Content\Template\vendor\jqueryui-touch-punch\jquery.ui.touch-punch.js" />
+    <Content Include="Content\Template\vendor\jquery\dist\jquery.js" />
+    <Content Include="Content\Template\vendor\js-storage\js.storage.js" />
+    <Content Include="Content\Template\vendor\jszip\dist\jszip.js" />
+    <Content Include="Content\Template\vendor\loaders.css\loaders.css" />
+    <Content Include="Content\Template\vendor\matchmedia\index.js" />
+    <Content Include="Content\Template\vendor\modernizr\modernizr.custom.js" />
+    <Content Include="Content\Template\vendor\moment\min\moment-with-locales.js" />
+    <Content Include="Content\Template\vendor\morris.js.so\morris.css" />
+    <Content Include="Content\Template\vendor\morris.js.so\morris.js" />
+    <Content Include="Content\Template\vendor\nestable\jquery.nestable.js" />
+    <Content Include="Content\Template\vendor\parsleyjs\dist\parsley.js" />
+    <Content Include="Content\Template\vendor\pdfmake\build\pdfmake.js" />
+    <Content Include="Content\Template\vendor\pdfmake\build\vfs_fonts.js" />
+    <Content Include="Content\Template\vendor\popper.js\dist\umd\popper.js" />
+    <Content Include="Content\Template\vendor\raphael\raphael.js" />
+    <Content Include="Content\Template\vendor\rickshaw\rickshaw.css" />
+    <Content Include="Content\Template\vendor\rickshaw\rickshaw.js" />
+    <Content Include="Content\Template\vendor\screenfull\dist\screenfull.js" />
+    <Content Include="Content\Template\vendor\select2\dist\css\select2.css" />
+    <Content Include="Content\Template\vendor\select2\dist\js\select2.full.js" />
+    <Content Include="Content\Template\vendor\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="Content\Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\Template\vendor\spinkit\css\spinkit.css" />
+    <Content Include="Content\Template\vendor\sweetalert\dist\sweetalert.css" />
+    <Content Include="Content\Template\vendor\sweetalert\dist\sweetalert.min.js" />
+    <Content Include="Content\Template\vendor\weather-icons\css\weather-icons-wind.css" />
+    <Content Include="Content\Template\vendor\weather-icons\css\weather-icons.css" />
+    <Content Include="Content\Template\vendor\weather-icons\font\weathericons-regular-webfont.svg" />
+    <Content Include="Content\Template\vendor\whirl\dist\whirl.css" />
+    <Content Include="Content\Template\vendor\x-editable\dist\bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="Content\Template\vendor\x-editable\dist\bootstrap3-editable\img\clear.png" />
+    <Content Include="Content\Template\vendor\x-editable\dist\bootstrap3-editable\img\loading.gif" />
+    <Content Include="Content\Template\vendor\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Python_Scripts\CustomerDemandModel.py" />
+    <Content Include="Python_Scripts\mypythonScripts.py" />
+    <Content Include="Python_Scripts\predict_1.py" />
+    <Content Include="Python_Scripts\ProdctDmandModel.py" />
+    <Content Include="Python_Scripts\PurchaseDemandCostModel.py" />
+    <Content Include="Python_Scripts\PurchaseDemandQuantityModel.py" />
+    <Content Include="Python_Scripts\SalesDemandModel.py" />
+    <Content Include="Python_Scripts\SalesModelTrain\preprocess_sales.py" />
+    <Content Include="Python_Scripts\script1.py" />
+    <Content Include="Python_Scripts\SupplierDemandModel.py" />
+    <Content Include="Python_Scripts\train_model1.py" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Python_Scripts\TrainedModelFile\Branch_Sales_Demand_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Branch_Sales_Demand_model.pkl" />
+    <Content Include="Python_Scripts\TrainedModelFile\Company_Sales_Demand_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Company_Sales_Demand_model.pkl" />
+    <Content Include="Python_Scripts\TrainedModelFile\Customer_Demand_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Customer_Demand_model.pkl" />
+    <Content Include="Python_Scripts\TrainedModelFile\Product_Demand_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Product_Demand_model.pkl" />
+    <Content Include="Python_Scripts\TrainedModelFile\Purchase_Demand_Quantity_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Purchase_Demand_Quantity_model.pkl" />
+    <Content Include="Python_Scripts\TrainedModelFile\Purchase_Demand_TotalCost_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Purchase_Demand_TotalCost_model.pkl" />
+    <Content Include="Python_Scripts\TrainedModelFile\Supplier_Demand_TotalAmount_model.h5" />
+    <Content Include="Python_Scripts\TrainedModelFile\Supplier_Demand_TotalAmount_model.pkl" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountsSettingController.cs" />
+    <Compile Include="Controllers\AdminConfigController.cs" />
+    <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\BranchDashboardController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomerInvoiceController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\PythonController.cs" />
+    <Compile Include="Controllers\PythonDemandForecastingController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountActivityMV.cs" />
+    <Compile Include="Models\AccountControlMV.cs" />
+    <Compile Include="Models\AccountHeadMV.cs" />
+    <Compile Include="Models\AccountSettingMV.cs" />
+    <Compile Include="Models\AccountSubControlMV.cs" />
+    <Compile Include="Models\BranchMV.cs" />
+    <Compile Include="Models\BranchTypeMV.cs" />
+    <Compile Include="Models\CategoryMV.cs" />
+    <Compile Include="Models\CityMV.cs" />
+    <Compile Include="Models\CompaniesRequestMV.cs" />
+    <Compile Include="Models\CompanyMV.cs" />
+    <Compile Include="Models\CountryMV.cs" />
+    <Compile Include="Models\CustomerMV.cs" />
+    <Compile Include="Models\CustomerInvoiceMV.cs" />
+    <Compile Include="Models\CustomerInvoiceDetailMV.cs" />
+    <Compile Include="Models\CustomerPaymentMV.cs" />
+    <Compile Include="Models\CustomerReturnInvoiceMV.cs" />
+    <Compile Include="Models\CustomerReturnInvoiceDetailMV.cs" />
+    <Compile Include="Models\CustomerReturnPaymentMV.cs" />
+    <Compile Include="Models\EmployeeMV.cs" />
+    <Compile Include="Models\FinancialYearMV.cs" />
+    <Compile Include="Models\FocalPersonMV.cs" />
+    <Compile Include="Models\PayrollMV.cs" />
+    <Compile Include="Models\PrintPurchaseInvoiceMV.cs" />
+    <Compile Include="Models\PrintSalesInvoiceMV.cs" />
+    <Compile Include="Models\PurchaseCartDetailMV.cs" />
+    <Compile Include="Models\PurchaseCartMV.cs" />
+    <Compile Include="Models\PurchaseCartSummaryMV.cs" />
+    <Compile Include="Models\PurchaseItemsMV.cs" />
+    <Compile Include="Models\SaleCartDetailMV.cs" />
+    <Compile Include="Models\StateMV.cs" />
+    <Compile Include="Models\StockMV.cs" />
+    <Compile Include="Models\StockMV2.cs" />
+    <Compile Include="Models\SupplierMV.cs" />
+    <Compile Include="Models\SupplierInvoiceMV.cs" />
+    <Compile Include="Models\SupplierInvoiceDetailMV.cs" />
+    <Compile Include="Models\SupplierPaymentMV.cs" />
+    <Compile Include="Models\SupplierReturnInvoiceMV.cs" />
+    <Compile Include="Models\SupplierReturnInvoiceDetailMV.cs" />
+    <Compile Include="Models\SupplierReturnPaymentMV.cs" />
+    <Compile Include="Models\TransactionMV.cs" />
+    <Compile Include="Models\UserMV.cs" />
+    <Compile Include="Models\UserTypeMV.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Python_Scripts\PythonInitializer.cs" />
+    <Compile Include="Python_Scripts\PythonProgram.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\Template\server\datatable.json" />
+    <Content Include="Content\Template\server\documentation\readme.md" />
+    <Content Include="Content\Template\server\i18n\site-en.json" />
+    <Content Include="Content\Template\server\i18n\site-es.json" />
+    <Content Include="Content\Template\server\xeditable-groups.json" />
+    <Content Include="Content\Template\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Template\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Template\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Template\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Template\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\Template\vendor\weather-icons\font\weathericons-regular-webfont.eot" />
+    <Content Include="Content\Template\vendor\weather-icons\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\Template\vendor\weather-icons\font\weathericons-regular-webfont.woff" />
+    <Content Include="Content\Template\vendor\weather-icons\font\weathericons-regular-webfont.woff2" />
+    <Content Include="Compnay\server\datatable.json" />
+    <Content Include="Compnay\server\documentation\readme.md" />
+    <Content Include="Compnay\server\i18n\site-en.json" />
+    <Content Include="Compnay\server\i18n\site-es.json" />
+    <Content Include="Compnay\server\xeditable-groups.json" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Dashboard\Admin.cshtml" />
+    <Content Include="Views\Dashboard\SubAdmin.cshtml" />
+    <Content Include="Views\Dashboard\HeadOffice.cshtml" />
+    <Content Include="Views\Dashboard\HeadOfficeUser.cshtml" />
+    <Content Include="Views\Dashboard\BranchUser.cshtml" />
+    <Content Include="Views\Dashboard\BranchOperator.cshtml" />
+    <Content Include="Views\User\AllUserTypes.cshtml" />
+    <Content Include="Views\User\CreateUserType.cshtml" />
+    <Content Include="Views\User\EditUserType.cshtml" />
+    <Content Include="Views\Company\NewCompany.cshtml" />
+    <Content Include="Views\Company\Companies.cshtml" />
+    <Content Include="Views\AdminConfig\AllBranchTypes.cshtml" />
+    <Content Include="Views\AdminConfig\CreateBranchType.cshtml" />
+    <Content Include="Views\AdminConfig\EditBranchType.cshtml" />
+    <Content Include="Views\AdminConfig\AllAccountActivity.cshtml" />
+    <Content Include="Views\AdminConfig\CreateAccountActivity.cshtml" />
+    <Content Include="Views\AdminConfig\EditAccountActivity.cshtml" />
+    <Content Include="Views\AdminConfig\AllAccountHeads.cshtml" />
+    <Content Include="Views\AdminConfig\CreateAccountHead.cshtml" />
+    <Content Include="Views\AdminConfig\EditAccountHead.cshtml" />
+    <Content Include="Views\AdminConfig\AllFinanicalYears.cshtml" />
+    <Content Include="Views\AdminConfig\CreateFinancialYear.cshtml" />
+    <Content Include="Views\AdminConfig\EditFinancialYear.cshtml" />
+    <Content Include="Views\Branch\CreateCompanyBranchs.cshtml" />
+    <Content Include="Views\Branch\AllCompanyBranchs.cshtml" />
+    <Content Include="Views\Branch\EditCompanyBranch.cshtml" />
+    <Content Include="Views\Employee\BranchEmployees.cshtml" />
+    <Content Include="Views\Employee\NewBranchEmployee.cshtml" />
+    <Content Include="Views\Employee\EditBranchEmployee.cshtml" />
+    <Content Include="Views\Employee\CreateBranchFocalPerson.cshtml" />
+    <Content Include="Views\Employee\ShowBranchFocalPerson.cshtml" />
+    <Content Include="Views\Stock\AllCategories.cshtml" />
+    <Content Include="Views\Stock\CreateCategory.cshtml" />
+    <Content Include="Views\Stock\EditCategory.cshtml" />
+    <Content Include="Views\Stock\StockProducts.cshtml" />
+    <Content Include="Views\Stock\CreateProduct.cshtml" />
+    <Content Include="Views\Stock\EditProduct.cshtml" />
+    <Content Include="Views\AccountsSetting\BranchAccountSetting.cshtml" />
+    <Content Include="Views\AccountsSetting\CreateBranchAccountSetting.cshtml" />
+    <Content Include="Views\Accounts\CreateAccountControl.cshtml" />
+    <Content Include="Views\Accounts\EditAccountControl.cshtml" />
+    <Content Include="Views\Accounts\AllAccountControls.cshtml" />
+    <Content Include="Views\Accounts\AllAccountSubControls.cshtml" />
+    <Content Include="Views\Accounts\CreateAccountSubControl.cshtml" />
+    <Content Include="Views\Accounts\EditAccountSubControl.cshtml" />
+    <Content Include="Views\AccountsSetting\EditBranchAccountSetting.cshtml" />
+    <Content Include="Views\Customer\AllBranchCustomer.cshtml" />
+    <Content Include="Views\Customer\CreateBranchCustomer.cshtml" />
+    <Content Include="Views\Customer\EditBranchCustomer.cshtml" />
+    <Content Include="Views\Supplier\AllBranchSupplier.cshtml" />
+    <Content Include="Views\Supplier\CreateBranchSupplier.cshtml" />
+    <Content Include="Views\Supplier\EditBranchSupplier.cshtml" />
+    <Content Include="Views\Purchase\PurchaseStockProducts.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Purchase\PrintPurchaseInvoive.cshtml" />
+    <Content Include="Views\Purchase\AllPurchases.cshtml" />
+    <Content Include="Views\CustomerInvoice\SaleCart.cshtml" />
+    <Content Include="Views\Python\Index.cshtml" />
+    <Content Include="Views\Python\Index2.cshtml" />
+    <Content Include="Views\Python\TrainModel1.cshtml" />
+    <Content Include="Views\Python\Predict1.cshtml" />
+    <Content Include="Views\Python\RunPython.cshtml" />
+    <Content Include="Views\CustomerInvoice\AllSales.cshtml" />
+    <Content Include="Views\CustomerInvoice\PrintSalesInvoive.cshtml" />
+    <Content Include="Views\PythonDemandForecasting\ProductDemandDashBoard.cshtml" />
+    <Content Include="Views\PythonDemandForecasting\CustomerDemandDashBoard.cshtml" />
+    <Content Include="Views\PythonDemandForecasting\BranchSalesDemand.cshtml" />
+    <Content Include="Views\PythonDemandForecasting\PurchaseDemandDashboardQty.cshtml" />
+    <Content Include="Views\PythonDemandForecasting\PurchaseDemandDashboardCost.cshtml" />
+    <Content Include="Views\PythonDemandForecasting\SupplierDemandDashboard.cshtml" />
+    <Content Include="Views\BranchDashboard\BranchDash.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AccountControl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj">
+      <Project>{affa969b-1ab7-41ce-ad71-8f1ab548eea3}</Project>
+      <Name>DatabaseLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59416</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59416/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

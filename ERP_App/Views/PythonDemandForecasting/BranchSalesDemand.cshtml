@@ -1,0 +1,32 @@
+﻿@model DatabaseLayer.tblBranch
+
+@{
+    ViewBag.Title = "BranchSalesDemand";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Branch Sales Forecasting</h2>
+
+@using (Html.BeginForm("BranchSalesDemand", "PythonDemandForecasting", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="invoiceDate">Select Month:</label>
+        <input type="month" id="invoiceDate" name="invoiceDate" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="branchName">Select Branch:</label>
+        @Html.DropDownList("branchName", ViewBag.Branches as SelectList, "Select Branch", new { @class = "form-control", required = "required" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Predict Sales</button>
+}
+
+@if (ViewBag.PredictedSales != null)
+{
+    <div class="alert alert-success" style="margin-top:20px;">
+        <strong>@ViewBag.PredictedSales</strong>
+    </div>
+}

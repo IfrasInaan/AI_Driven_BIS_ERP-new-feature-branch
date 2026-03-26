@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ERP_App.Models.AccountSettingMV>
+
+@{
+    ViewBag.Title = "Account Setting";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Account Setting</div>
+
+    </div>
+    <div class="card-body">
+        <div>@Html.ActionLink("New Setting", "CreateBranchAccountSetting", null, new { @class = "btn btn-primary" })</div>
+        <hr />
+        <table class="table table-striped my-4 w-100" id="datatable2">
+            <thead>
+                <tr>
+                    <th>
+                        Account Head
+                    </th>
+                    <th>
+                        AccountControl
+                    </th>
+                    <th>
+                        Account Sub Control
+                    </th>
+                    <th>
+                        Activity
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountHead)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountControl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountSubControl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountActivity)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditBranchAccountSetting", new { id = item.AccountSettingID }, new { @class = "btn btn-warning" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Predict1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Predict1</h2>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
+}
+else
+{
+    <p>Predicted Class: @ViewBag.Prediction</p>
+}
